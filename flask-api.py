@@ -3,10 +3,19 @@
 # import subprocess
 from subprocess import Popen, PIPE, call, run
 from flask import Flask, request
+import random
 app = Flask(__name__)
+token = "dude"
 
 # methods=('get', 'post'
-@app.route('/')
+@app.route('/item1')
+def item1():
+    # token = "dude"
+    if request.args.get("token") != token:
+        return "Denied!"
+    else:
+        return str(random.randint(1,10))
+@app.route('/hello')
 def hello():
     # r = subprocess.call(["ls", "-lhat"])
 
@@ -32,4 +41,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1234)
+    app.run(debug=True, host='0.0.0.0', port=1234, ssl_context='adhoc')
