@@ -17,7 +17,9 @@ def item1():
     else:
         return str(random.randint(1,10))
 @app.route('/hello')
-def hello():
+
+
+def bash_pwsh():
     # r = subprocess.call(["ls", "-lhat"])
 
     # p = Popen(['ls', '-lat'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
